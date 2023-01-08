@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import users from './User.module.css';
+import Button from './Button';
 
 const User = () => {
   const submitForm = (event) => {
@@ -9,16 +10,15 @@ const User = () => {
   return (
     <Card>
       <form onSubmit={submitForm}>
-        <label htmlFor="userName">Name:</label>
-        <input
-          className={users.users}
-          type="text"
-          id="userName"
-          name="userName"
-        />
-        <label htmlFor="age">Age(Years):</label>
-        <input className={users.users} type="number" id="age" name="age" />
-        <button type="submit">Add User</button>
+        <span className={users.input}>
+          <label htmlFor="userName">Name:</label>
+          <input type="text" id="userName" name="userName" />
+        </span>
+        <span className={users.input}>
+          <label htmlFor="age">Age(Years):</label>
+          <input className={users.input} type="number" id="age" name="age" />
+        </span>
+        <Button type="submit" title="Add User" />
       </form>
     </Card>
   );
