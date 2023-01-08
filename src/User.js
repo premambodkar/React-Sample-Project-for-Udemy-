@@ -9,24 +9,24 @@ const User = () => {
 
   const addUserHandler = (event) => {
     event.preventDefault();
-    if (userName && userName.trim().length === 0 && +age < 1) {
+    if (!userName && +age < 1) {
       return;
-    } else if (userName && userName.trim().length === 0) {
+    } else if (!userName) {
       return;
     } else if (+age < 1) {
       return;
     }
     console.log(userName, age);
     setUserName('');
-    setAge(0);
+    setAge('');
   };
 
   const userNameChange = (event) => {
-    setUserName(event);
+    setUserName(event.target.value);
   };
 
   const userAgeChange = (event) => {
-    setAge(event);
+    setAge(event.target.value);
   };
 
   return (
@@ -38,6 +38,7 @@ const User = () => {
             type="text"
             id="userName"
             name="userName"
+            value={userName}
             onChange={userNameChange}
           />
         </span>
@@ -47,6 +48,7 @@ const User = () => {
             className={users.input}
             type="number"
             id="age"
+            value={age}
             name="age"
             onChange={userAgeChange}
           />
