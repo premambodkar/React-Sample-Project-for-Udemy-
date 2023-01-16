@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import User from './User/User.js';
 import UserList from './User/UserList.js';
+import ErrorModel from './common/ErrorModel.js';
 
 export default function App() {
-  const users = [];
+  const [usersList, setUsersList] = useState([]);
+
+  const addUser = (data) => {
+    console.log('data', data);
+    setUsersList([...usersList, ...[data]]);
+  };
   return (
     <>
-      <User />
-      <UserList users={users} />
+      <ErrorModel title="Error Model" content="Error Content" />
+      <User addUser={addUser} />
+      <UserList users={usersList} />
     </>
   );
 }

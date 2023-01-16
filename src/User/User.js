@@ -3,7 +3,7 @@ import Card from '../Card';
 import users from './User.module.css';
 import Button from '../Button';
 
-const User = () => {
+const User = (props) => {
   const [userName, setUserName] = useState('');
   const [age, setAge] = useState('');
 
@@ -19,6 +19,7 @@ const User = () => {
     console.log(userName, age);
     setUserName('');
     setAge('');
+    props.addUser({ name: userName, age: age });
   };
 
   const userNameChange = (event) => {
