@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Card from '../common/Card.js';
+import Card from '../common/Card';
 import users from './User.module.css';
 import Button from '../common/Button.js';
 import ErrorModel from '../common/ErrorModel.js';
