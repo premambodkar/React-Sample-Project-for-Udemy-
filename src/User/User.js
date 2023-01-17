@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Card from '../common/Card.js';
 import users from './User.module.css';
 import Button from '../common/Button.js';
@@ -8,6 +8,10 @@ const User = (props) => {
   const [error, setError] = useState();
   const nameInput = useRef();
   const ageInput = useRef();
+
+  useEffect(() => {
+    console.log('Name input has value');
+  }, [nameInput]);
 
   const addUserHandler = (event) => {
     event.preventDefault();
