@@ -13,9 +13,10 @@ export default function App() {
   };
   return (
     <>
-      <ErrorModel title="Error Model" content="Error Content" />
+      
       <User addUser={addUser} />
       <UserList users={usersList} />
+      <ErrorModel title="Error Model" content="Error Content" />
     </>
   );
 }
