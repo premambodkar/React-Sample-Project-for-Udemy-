@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import Card from '../Card';
+import Card from '../common/Card.js';
 import users from './User.module.css';
-import Button from '../Button';
+import Button from '../common/Button.js';
 import ErrorModel from '../common/ErrorModel.js';
 
 const User = (props) => {

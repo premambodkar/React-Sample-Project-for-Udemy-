@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './ErrorModal.module.css';
-import Button from '../Button.js';
-import Card from '../Card.js';
+import Button from './Button.js';
+import Card from './Card.js';
 const ErrorModel = (props) => {
   return (
     <>
