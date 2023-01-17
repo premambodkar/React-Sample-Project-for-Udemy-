@@ -5,7 +5,7 @@ import Card from '../Card.js';
 const ErrorModel = (props) => {
   return (
     <>
-      <div className={classes.backdrop}></div>
+      {/* <div className={classes.backdrop}></div> */}
       <Card className={classes.model}>
         <header className={classes.header}>
           <h2>{props.title}</h2>
@@ -14,7 +14,7 @@ const ErrorModel = (props) => {
           <p>{props.content}</p>
         </div>
         <footer className={classes.actions}>
-          <Button title="Okey"></Button>
+          <Button title="Okey" click={props.onHandleError}></Button>
         </footer>
       </Card>
     </>

@@ -1,62 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Card from '../Card';
 import users from './User.module.css';
 import Button from '../Button';
+import ErrorModel from '../common/ErrorModel.js';
 
 const User = (props) => {
-  const [userName, setUserName] = useState('');
-  const [age, setAge] = useState('');
+  const [error, setError] = useState();
+  const nameInput = useRef();
+  const ageInput = useRef();
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    const userName = nameInput.current.value;
+    const age = ageInput.current.value;
+
     if (!userName && +age < 1) {
+      setError(true);
       return;
     } else if (!userName) {
+      setError(true);
       return;
     } else if (+age < 1) {
+      setError(true);
       return;
     }
-    console.log(userName, age);
-    setUserName('');
-    setAge('');
     props.addUser({ name: userName, age: age });
   };
 
-  const userNameChange = (event) => {
-    setUserName(event.target.value);
-  };
-
-  const userAgeChange = (event) => {
-    setAge(event.target.value);
+  const handleError = () => {
+    setError(false);
   };
 
   return (
-    <Card>
-      <form onSubmit={addUserHandler}>
-        <span className={users.input}>
-          <label htmlFor="userName">Name:</label>
-          <input
-            type="text"
-            id="userName"
-            name="userName"
-            value={userName}
-            onChange={userNameChange}
-          />
-        </span>
-        <span className={users.input}>
-          <label htmlFor="age">Age(Years):</label>
-          <input
-            className={users.input}
-            type="number"
-            id="age"
-            value={age}
-            name="age"
-            onChange={userAgeChange}
-          />
-        </span>
-        <Button type="submit" title="Add User" />
-      </form>
-    </Card>
+    <>
+      {error && (
+        <ErrorModel
+          title="Error Model"
+          content="Error Content"
+          onHandleError={() => {
+            handleError();
+          }}
+        />
+      )}
+      <Card>
+        <form onSubmit={addUserHandler}>
+          <span className={users.input}>
+            <label htmlFor="userName">Name:</label>
+            <input type="text" id="userName" name="userName" ref={nameInput} />
+          </span>
+          <span className={users.input}>
+            <label htmlFor="age">Age(Years):</label>
+            <input
+              className={users.input}
+              type="number"
+              id="age"
+              name="age"
+              ref={ageInput}
+            />
+          </span>
+          <Button type="submit" title="Add User" />
+        </form>
+      </Card>
+    </>
   );
 };
 
